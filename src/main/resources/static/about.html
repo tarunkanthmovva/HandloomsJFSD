@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Handloom Fashion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e0f7fa;
+            color: #333;
+        }
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #add8e6;
+            color: white;
+        }
+        header .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .header-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .btn {
+            background: #ff4081;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .slider {
+            max-width: 80%;
+            height: 300px;
+            margin: 20px auto 40px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.2s ease-in-out;
+        }
+        .slides img {
+            width: 50%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .slider-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .slider-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #add8e6;
+            color: #333;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .content-section {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        .content-section h2, .content-section h3 {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><a href="index.html">Handlooms</a></div>
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="artisans.html">Artisans</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cart.html" id="cart-link">Cart</a></li>
+            <li><a href="orders.html" id="orders-link">Orders</a></li>
+        </ul>
+    </nav>
+    <div class="header-links">
+        <a href="logout.html" class="btn">LogOut</a>
+    </div>
+</header>
+
+<main>
+    <!-- Image Slider -->
+    <div class="slider">
+        <div class="slides">
+            <img src="https://flourishplanet.com/cdn/shop/articles/the-handloom-industry-a-journey-through-time-680647.jpg?v=1702461053" alt="Handloom Design 1">
+            <img src="https://www.tnhandlooms.tn.gov.in/img/s11.jpg" alt="Handloom Design 2">
+            <img src="https://d2hijos0r2m9rf.cloudfront.net/uploads/blog_image/blog_UllalHandloomCluster-4232.jpg" alt="Handloom Design 3">
+            <img src="https://anuprerna-bloomscorp.s3.ap-south-1.amazonaws.com/V6HGH3ZU9AEQY3UHYGNJZ2JFBNGZ06475.jpg" alt="Handloom Design 4">
+            <img src="https://cdn.shopify.com/s/files/1/0553/6137/2313/files/Inner_Blog_Image.jpg?v=1692332980" alt="Handloom Design 5">
+            <img src="https://flourishplanet.com/cdn/shop/articles/the-handloom-industry-a-journey-through-time-680647.jpg?v=1702461053" alt="Handloom Design 6">
+            <img src="https://www.tnhandlooms.tn.gov.in/img/s11.jpg" alt="Handloom Design 7">
+            <img src="https://d2hijos0r2m9rf.cloudfront.net/uploads/blog_image/blog_UllalHandloomCluster-4232.jpg" alt="Handloom Design 8">
+            <img src="https://anuprerna-bloomscorp.s3.ap-south-1.amazonaws.com/V6HGH3ZU9AEQY3UHYGNJZ2JFBNGZ06475.jpg" alt="Handloom Design 9">
+            <img src="https://cdn.shopify.com/s/files/1/0553/6137/2313/files/Inner_Blog_Image.jpg?v=1692332980" alt="Handloom Design 10">
+            
+        </div>
+        <div class="slider-nav">
+            <button id="prev">❮</button>
+            <button id="next">❯</button>
+        </div>
+    </div>
+
+    <!-- About Handlooms Content -->
+    <div class="content-section">
+        <h2>How Handlooms Are Made</h2>
+        <p>Handlooms are an integral part of traditional textile production and are crafted using a combination of skill, precision, and artistry. This intricate process has been passed down through generations, reflecting the cultural heritage of communities across the globe. Below is a detailed overview of how handlooms are made:</p>
+        
+        <h3>1. Selection of Raw Materials</h3>
+        <p>The process begins with selecting high-quality raw materials such as cotton, silk, jute, or wool. The choice of material depends on the type of fabric to be woven. These fibers are often sourced locally, ensuring authenticity and sustainability.</p>
+
+        <h3>2. Preparing the Yarn</h3>
+        <p>The fibers are spun into yarn using a spinning wheel (charkha) or modern spinning techniques. This yarn is then dyed using natural or synthetic dyes. Traditional artisans often use natural dyes derived from plants, minerals, and insects, ensuring eco-friendly production.</p>
+
+        <h3>3. Warping and Loom Setup</h3>
+        <p>Warping is the process of preparing the loom for weaving. Threads are stretched lengthwise (warp threads) across the loom in a fixed pattern.</p>
+
+        <h3>4. Weaving</h3>
+        <p>Weaving is the core process of creating fabric on a handloom. It involves interlacing the warp (lengthwise) and weft (crosswise) threads to form patterns and textures.</p>
+
+        <h3>5. Finishing Touches</h3>
+        <p>Once the fabric is woven, it undergoes finishing processes such as washing, pressing, and tailoring to create finished products.</p>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Handloom Fashion. All rights reserved.</p>
+</footer>
+
+<script>
+    let currentSlide = 0;
+
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const totalSlides = images.length;
+
+    const nextButton = document.getElementById('next');
+    const prevButton = document.getElementById('prev');
+
+    function updateSlide() {
+        const offset = -currentSlide * 100;
+        slides.style.transform = `translateX(${offset}%)`;
+    }
+
+    nextButton.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlide();
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlide();
+    });
+
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlide();
+    }, 3000); // Auto-slide every 3 seconds
+</script>
+
+</body>
+</html>

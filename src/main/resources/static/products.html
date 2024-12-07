@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products - Handloom Fashion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image: url('https://i0.wp.com/theartofcostume.com/wp-content/uploads/2019/02/d82b9-k020119a-0632.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(173, 216, 230, 0.9); /* Light blue background with transparency */
+            color: #333;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+        }
+        .header-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .btn {
+            background: #ff4081;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-bar input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 60px; /* Increased row spacing */
+            padding: 20px;
+            align-items: center;
+            max-width: 90%;
+            margin: 50px auto;
+        }
+        .product-list h2 {
+            color: #4a148c;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            width: 100%;
+        }
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 30px;
+            margin: 30px;
+            text-align: center;
+            background: #fff; /* Solid white background for individual product cards */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(173, 216, 230, 0.9); /* Light blue background with transparency */
+            color: #333;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><a href="index.html">Handlooms</a></div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for products..." oninput="filterProducts()">
+        <button onclick="startVoiceSearch()">
+            🎤 <!-- Microphone icon -->
+        </button>
+        <button onclick="startCameraSearch()">
+            📷 <!-- Camera icon -->
+        </button>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="artisans.html">Artisans</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+        </ul>
+    </nav>
+    <div class="header-links">
+        <a href="logout.html" class="btn">LogOut</a>
+    </div>
+</header>
+
+<main>
+    <section class="product-list">
+        <h2>Available Products</h2>
+        <div id="productContainer" class="product-row"></div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Handloom Fashion. All rights reserved.</p>
+</footer>
+
+<script>
+    let allProducts = []; // Stores all fetched products for filtering
+
+    // Fetch product data from the server/database
+    async function fetchProducts() {
+        try {
+            const response = await fetch('/api/products');
+            const products = await response.json();
+            console.log('Fetched products:', products);
+            allProducts = products; // Save the data globally
+            displayProducts(products);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    }
+
+    // Display products dynamically in rows
+    function displayProducts(products) {
+        const productContainer = document.getElementById('productContainer');
+        productContainer.innerHTML = ''; // Clear previous results
+
+        products.forEach((product) => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+            productCard.innerHTML = `
+                <img src="${product.image_url}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>Description: ${product.description}</p>
+                <p>Price: $${product.price}</p>
+                <button onclick="addToCart('${product.name}', '${product.description}', ${product.price})">Add to Cart</button>
+            `;
+            productContainer.appendChild(productCard);
+        });
+    }
+
+    // Add product to cart and log to console
+    function addToCart(name, description, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({ name, description, price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Product added to cart!');
+
+        console.log('Added to cart:', { name, description, price });
+    }
+
+    // Filter products based on search input
+    function filterProducts() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const filteredProducts = allProducts.filter(product =>
+            product.name.toLowerCase().includes(searchInput)
+        );
+        displayProducts(filteredProducts);
+    }
+
+    // Camera search functionality placeholder
+    function startCameraSearch() {
+        alert("Camera search is not implemented yet.");
+    }
+
+    // Voice search functionality placeholder
+    function startVoiceSearch() {
+        alert("Voice search is not implemented yet.");
+    }
+
+    // Load products initially
+    fetchProducts();
+</script>
+
+</body>
+</html>

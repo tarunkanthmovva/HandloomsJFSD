@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Handloom Fashion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image: url('https://www.hollywoodreporter.com/wp-content/uploads/2016/02/20160122_thr_sandypowell_017.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #add8e6; /* Light blue background */
+            color: white;
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        header .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .header-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .btn {
+            background: #ff4081;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .content {
+            padding: 10px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1); /* Transparent background */
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 150px auto;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Adds shadow for better appearance */
+            backdrop-filter: blur(10px); /* Glass effect */
+            -webkit-backdrop-filter: blur(10px); /* Glass effect for Safari */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
+        }
+        h1 {
+            color: #4a148c;
+            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .info {
+            font-size: 18px;
+            color: #555;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 0.1px;
+            background: #add8e6; /* Light blue background */
+            color: #333; /* Darker text for better contrast */
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4caf50;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">Handlooms</a>
+        <label class="toggle-switch">
+            <input type="checkbox" id="brandMallToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="artisans.html">Artisans</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+        </ul>
+    </nav>
+    <div class="header-links">
+        <a href="logout.html" class="btn">LogOut</a>
+    </div>
+</header>
+
+<main>
+    <section class="content">
+        <h1>Welcome to Handloom Fashion</h1>
+        <p class="info">Explore our handloom products and shop the best traditional fashion from skilled artisans.</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Handloom Fashion. All rights reserved.</p>
+</footer>
+
+<script>
+    const toggle = document.getElementById('brandMallToggle');
+    toggle.addEventListener('change', function () {
+        alert(`Brand Mall is now ${this.checked ? 'On' : 'Off'}`);
+    });
+</script>
+
+</body>
+</html>
